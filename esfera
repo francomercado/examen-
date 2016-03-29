@@ -1,0 +1,11 @@
+Proceso esfera
+	Definir diametro como real;
+	Escribir "el diametro:"
+	Leer diametro 
+	area<- 4*3.1416*(diametro/2)*(diametro/2);
+	volumen<-4*3.1415*(diametro/2)*(diametro/2)*(diametro/2);
+	circunferencia<-3.1415*diametro;
+	Escribir "area: ",area;
+	Escribir "volumen: ",volumen;
+	Escribir "circunferencia: ", circunferencia;
+FinProceso
