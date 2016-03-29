@@ -1,0 +1,52 @@
+//// menu.cpp : Defines the entry point for the console application.
+// Nombre: Jean franco Mercado
+//Fecha: 29/03/2016
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+using namespace std;
+
+void main()
+{
+	
+	int opcion, edad; 
+	float radio, area;
+
+   do { 
+	   cout<< endl;
+       cout<<"1.- area de un circulo"<<endl;
+	   cout<<"2.- votacion"<<endl;
+	   cout<<"0.- salir"<<endl;
+	   cout<<"elige una opcion"<<endl;
+	   cin>>opcion;
+     switch (opcion) {
+	    case 1:
+			{   cout<<"ingrese radio"<<endl;
+                cin>>radio;
+                area= radio*radio*3.141516;
+                cout<<"el area es"<<endl<< area;
+	
+				break; //break terminar la instruccion
+			}
+	    case 2:
+			{
+				cout<<" ingrese la edad:"<<endl;
+                cin>>edad;
+                if(edad>=18)
+                cout<<"puede votar";
+                else
+                cout<<"no puede votar";
+			
+			break;
+			}
+		   case 0:
+			{
+				cout << "Salir";
+				break;
+			}
+			
+	    default: cout << "Opcion invalida" << endl;
+     }
+     
+	 } while (opcion != 0);
+}
