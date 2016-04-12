@@ -1,0 +1,29 @@
+// haver.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+void main()
+{
+	int i,n,factorial;
+
+	do {
+	  cout<<"ingrese el valor de n:";
+	  cin>>n;
+
+    }while(n<0);
+
+factorial=1;
+i=1;
+while(i<=n){
+
+factorial=factorial*i;
+i++;
+}
+cout<<"el factorial de"<<n<<"es"<<factorial;
+getch();
+}
+
