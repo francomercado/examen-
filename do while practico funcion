@@ -1,0 +1,40 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+float ganancia(float h,float c);
+void main()
+
+ {
+	 
+	 float horas,costo,total,s=0;
+    int n;
+	do{
+    cout <<"Ingrese el numero de empleados" ; 
+	cin >>n;
+    } while (n<0);
+	for(int i=1;i<=n;i++)
+	{ 
+		do
+		{
+    cout <<"Ingrese las horas trabajadas"; 
+	cin >> horas;
+		}while((horas<=0)||(horas>200));
+	cout<<"ingrese el costo";
+	cin>>costo;
+	total=ganancia(horas,costo);
+		s=s+total;
+	cout<<"el total ganado es:"<<total;
+	}
+	cout<<"el total de la pantalla es"<<s;
+}
+    
+
+float ganancia (float h, float c)
+ { 
+	 float v;
+		 v= h*c ;	
+     return v;    
+ }
+
