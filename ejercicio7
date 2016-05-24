@@ -1,0 +1,136 @@
+// ejercicio7.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "stdlib.h"
+#include "conio.h"
+#define MAX 100
+using namespace std;
+
+void cargar(double a[], int tam);
+void mostrar(double a[], int tam);
+void traducir(double a[], int tam);
+void main()
+{
+	double k, N[MAX];
+	int n, opcion;
+	do
+	{
+		cout<<"Cuantos elementos va a tener el arreglo"<<endl;
+		cin>>n;
+	} while(n<=0 || n>MAX);
+	do
+	{
+		cout<<"MENU"<<endl;
+		cout<<"1. CARGAR VECTOR"<<endl;
+		cout<<"2. MOSTRAR VECTOR"<<endl;
+		cout<<"3. TRADUCIR ELEMENTO"<<endl;
+		cout<<"0. SALIR"<<endl;
+		cout<<"------------------"<<endl;
+		cout<<"ingrese la opcion"<<endl;
+		cin>>opcion;
+		switch(opcion)
+		{
+		case 1: 
+			{
+			cargar(N, n);
+			break;
+			}
+		case 2:
+			{
+				mostrar(N, n);
+				break;
+			}
+		case 3:
+			{
+				traducir(N,n);
+				break;
+			}
+		case 0:
+			cout<<"SALIR"<<endl;
+			break;
+
+		default:
+			cout<<"La opcion introducida es incorrecta";
+			break;
+		}
+	}while(opcion!=0);
+	getch();
+}
+
+void cargar(double a[], int tam)
+{
+	cout<<"Introduzca los datos del arreglo"<<endl;
+	for(int i=0; i<tam; i++)
+	{
+		cout<<"Ingrese datos entre 1 y 20"<<endl;
+		do
+		{
+
+			cout<<"V ["<<i<<"] : ";
+			cin>>a[i];
+		}while(a[i]>20 || a[i]<0);
+	}
+	getch();
+	system("cls");
+}
+
+void mostrar(double a[], int tam)
+{
+	cout<<"El vector ordenado ascendentemente"<<endl;
+	for(int i=0; i<tam; i++)
+	{
+		cout<<"V ["<<i<<"] : "<<a[i]<<endl;
+	}
+}
+void traducir(double a[], int tam)
+{
+	int i;
+	mostrar(a, tam);
+	cout<<"Introduzca la posicion del elemento que desea traducir"<<endl;
+	cin>>i;
+	if(a[i]==0)
+		cout<<"CERO"<<endl;
+	if(a[i]==1)
+		cout<<"UNO"<<endl;
+	if(a[i]==2)
+		cout<<"DOS"<<endl;
+	if(a[i]==3)
+		cout<<"TRES"<<endl;
+	if(a[i]==4)
+		cout<<"CUATRO"<<endl;
+	if(a[i]==5)
+		cout<<"CINCO"<<endl;
+	if(a[i]==6)
+		cout<<"SEIS"<<endl;
+	if(a[i]==7)
+		cout<<"SIETE"<<endl;
+	if(a[i]==8)
+		cout<<"OCHO"<<endl;
+	if(a[i]==9)
+		cout<<"NUEVE"<<endl;
+	if(a[i]==10)
+		cout<<"DIEZ"<<endl;
+	if(a[i]==11)
+		cout<<"ONCE"<<endl;
+	if(a[i]==12)
+		cout<<"DOCE"<<endl;
+	if(a[i]==13)
+		cout<<"TRECE"<<endl;
+	if(a[i]==14)
+		cout<<"CATORCE"<<endl;
+	if(a[i]==15)
+		cout<<"QUINCE"<<endl;
+	if(a[i]==16)
+		cout<<"DIECISEIS"<<endl;
+	if(a[i]==17)
+		cout<<"DIECISIETE"<<endl;
+	if(a[i]==18)
+		cout<<"DIECIOCHO"<<endl;
+	if(a[i]==19)
+		cout<<"DIECINUEVE"<<endl;
+	if(a[i]==20)
+		cout<<"VEINTE"<<endl;
+
+}
