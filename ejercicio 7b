@@ -1,0 +1,84 @@
+// ejercicio7b.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#define MAX 100
+
+using namespace std;
+void cargar (double a[], int tam);
+void mostrar (double a[], int tam);
+int comparacion(int m,int n);
+
+void main()
+{
+	double vec[MAX];
+	int n,k;
+	float mayor,x,z;
+	do
+	{
+		cout<<"ingrese el numero de elementos del vector:";
+		cin>>n;
+	}
+	while((0>=n)||(n>100));
+	do
+	{
+		cout<<"MENU"<<endl;
+		cout<<"1. cargar el vector"<<endl;
+		cout<<"2. mostrar el vector"<<endl;
+		cout<<"3. comparacion del vector"<<endl;
+		cout<<"0. salir"<<endl;
+		cout<<"digite su opcion:"<<endl;
+		cin>>k;
+
+		switch(k){
+		case 1: cargar (vec,n);
+			break;
+		case 2: mostrar(vec,n);
+			break;
+		case 3:{ 
+		x=comparacion(vec[0],vec[1]);
+		mayor=x;
+	for (int i=1;i<n;i++)
+	{
+		z=comparacion (vec[i],vec[i+1]);
+			if (mayor<z)
+				mayor=z;
+	}
+	cout<<"la mayor diferencia es:"<<mayor<<endl;}
+			   break;
+		case 0: cout<<"fin porgrama";
+			break;
+			default: cout<<"opcion invalida";
+		}
+				system("pause>null");
+				system("cls");
+		} while(k!=0);
+	getch();
+}
+void cargar (double a[], int tam)
+{ 
+	for (int i=0;i<tam;i++)
+	{
+		cout<<"V["<<i<<"]="<<endl;
+		cin>>a[i];
+	}
+}
+void mostrar (double a[], int tam)
+{
+	for(int i=0;i<tam;i++)
+	{
+		cout<<"V["<<i<<"]="<<a[i]<<endl;
+	}
+}
+
+int comparacion(int m, int n)
+{
+	float x;
+	if (m<n)
+		x=n-m;
+	else 
+		x=m-n;
+	return x;
+}
