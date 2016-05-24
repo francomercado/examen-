@@ -1,0 +1,90 @@
+// ejercicio.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "stdlib.h"
+#define MAX 100
+#define GEN 100
+
+using namespace std;
+
+//Prototipo
+void cargar (double a[], int tam);
+void mostrar (double a[], int tam);
+void concatenar (double a[], int tam,double a2[], int tam2,double a3[], int &tam3);
+
+void main ()
+{
+	double vec[MAX],vec2[GEN],vec3[MAX];
+	int n,n2,n3,opcion;
+
+	do{
+		cout<<"Pasos ejercicio 9"<<endl;
+		cout<<"1. Cargar vector a"<<endl;
+		cout<<"2. cargar vector b"<<endl;
+		cout<<"3. Concatenar"<<endl;
+		cout<<"0. salir"<<endl;
+		cout<<" Elige una opcion: ";
+		cin>>opcion;
+		switch(opcion){
+		case 1: 
+		{
+			do{	cout<<"Ingrese el numero de elementos del vector a: ";
+			cin>>n;
+			}while ((0>=n)||(n>=100));
+			cargar (vec,n);break;
+		}
+		case 2: {
+
+			do{
+				cout<<"Ingrese el numero de elementos del vector b: ";
+				cin>>n2;
+			}while ((0>=n)||(n>=100));
+			cargar (vec2,n2);
+
+				}break;
+		case 3: 
+			{	concatenar (vec,n,vec2,n2,vec3,n3);
+				mostrar(vec3,n3);
+			    getch();
+			}break;
+	
+		case 0: { cout<<"salir"<<endl;
+				}
+		default: cout << "Opcion invalida" << endl;
+		}
+
+		system ("cls");
+	} while (opcion != 0);
+}
+
+void cargar (double a[], int tam)
+{
+	for(int i=0;i<tam;i++)
+	{
+		do{	cout<<"a["<<i<<"]= ";
+		cin>> a[i];
+		}while(a[i]<0);
+
+	}
+}
+
+void mostrar (double a[], int tam)
+{	
+	cout <<"vector a"<< endl;
+	for(int i=0;i<tam;i++){
+		cout<<"a["<<i<<"]= "<<a[i]<<endl;
+	}
+	cout<<" "<<endl;
+}
+
+void concatenar (double a[], int tam,double a2[], int tam2,double a3[], int &tam3)
+{
+	for (int i=0;i<tam;i++)
+		a3[i]=a[i];
+	for (int i=0;i<tam2;i++)
+		a3[tam+i]=a2[i];
+	tam3=tam+tam2;
+}
