@@ -1,0 +1,29 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+ int cantidaddigitos(int n) {
+  int c=0;
+   while (n>0){
+
+	   n= n/ 10;
+      c++;
+   }
+   return(c);
+}
+void main()
+{  int nro,r;
+	do{
+	
+	cout <<"introduzca un numero natural";
+    cin>>nro;
+	if ( nro<1)
+		cout<<"Error/ debe introducir un numero natural";
+   }while (nro <1);
+
+     r= cantidaddigitos(nro);
+   cout<<"la cantidad de digitos es"<<r;	 
+	 
+   getch();
+}
+	 
