@@ -1,0 +1,60 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+ int cantidaddigitos(int n) {
+  int c=0;
+   while (n>0){
+
+	   n= n/ 10;
+      c++;
+   }
+   return(c);
+ }
+   int sumadigitos(int n){
+	   int s=0,d;
+	   while(n>0){
+		   d=n % 10;
+		   s=s+d;
+		   n=n/10;
+		   }
+	   return (s);
+}
+   int restadigitos(int n){
+	   int t=0,d;
+	   while(n>0){
+		   d=n % 10;
+		   t=t-d;
+		   n=n/10;
+		   }
+	   return (t);
+}
+void main()
+{  int nro,r,opcion,p;
+	do{
+	cout<<" Menu de opciones";
+	cout<<"1.- suma";
+	cout<<"2.- resta";
+	cout<<"3.- Salir";
+	cout<<"Introduzca opcion";
+	cin>> opcion;
+
+	switch (opcion)
+		case 1:{
+			cout<<"introduzca un numero"<<endl;
+			cin>>nro;
+			r= sumadigitos(nro);
+			break;
+	          }
+		case 2:{
+			cout <<"introduzca un numero "<<endl;
+			cin>>nro;
+			p= restadigitos(nro)
+				break;
+		case 3:{ cout <<"sale del programa"
+				   break;
+			}
+			   default cout<<"ERROR";
+	 
+   getch();
+}
