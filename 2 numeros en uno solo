@@ -1,0 +1,31 @@
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+
+ int contardigitos(int n){
+	 int c=0;
+	 while(n>0){
+		 c++;
+		 n=n/10;
+	 }
+	 return(c);
+}
+int concatenar(int a,int b){
+	return(a*powf(10,contardigitos(b))+b);
+}
+
+   
+
+void main()
+{  int nro1,r,nro2;
+cout<<"introduzca numero"<<endl;
+cin>>nro1;
+cout<<"introduzca otro numero"<<endl;
+cin>>nro2;
+r=concatenar(nro1,nro2);
+
+cout<<"el nuevo numero es "<<r;
+ getch();
+} 
+
