@@ -1,0 +1,58 @@
+#include "iostream"
+#include "conio.h"
+
+using namespace std;
+
+void cargar(int vector[], int n)
+{ int i;
+for ( i=0;i<n;i++){
+	cout<<"introducir elementos para vec["<<i<<"] :";
+    cin>>vector[i];
+   }
+}
+
+
+void mostrar( int vector[],int n)
+{int i;
+ cout<<"el contenido del vector es---->>:\n"<<endl;
+for (i=0;i<n;i++){
+	cout<< vector[i] <<" ";
+    }
+}
+
+
+bool verificar_primo( int n){
+	bool k = true;
+	int i;
+	for(i=2;i<n;i++)
+	{ if(n%i== 0){
+	k=false;
+	}
+	return (k);
+   }
+}
+
+void eliminar_Nro_primos(int vector[], int &n)
+  { int i,k;
+for(i=0;i<n;i++){
+	if(verificar_primo(vector[i]) == true){
+		for(k=i;k<n-1;k++){
+			vector[k]= vector[k+1];
+		}
+		n--;
+		i--;
+	}
+   }
+}
+
+
+void main(){
+	int vector[25],n;
+	cout<<"introduzca elementos del vector";
+	cin>>n;
+	cargar(vector,n);
+	mostrar(vector,n);
+	eliminar_Nro_primos(vector,n);
+	mostrar(vector,n);
+	getch();
+}
