@@ -1,0 +1,58 @@
+#include <iostream>
+#include <conio.h>
+#define fil 20
+#define col 20
+using namespace std;
+
+void cargar( int mat[fil][col], int n, int m){
+	int i,j;
+	for(i=0;i<n;i++){
+		for (j=0;j<n;j++){
+			cout<<"introduzca dato mat["<<i<<"]["<<j<<"] : ";
+	cin>>mat[i][j];
+		}
+	}
+}
+void mostrar( int mat[fil][col], int n, int m){
+	int i,j;
+	cout<<"el contenido de la matriz es"<<endl;
+	for(i=0;i<n;i++){
+		for (j=0;j<n;j++){
+			cout<<mat[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+}
+	
+
+void burbuja( int vect[], int n){
+	int i,k,aux;
+	for(i=0;i<n;i++){
+		for(k=i+1;k<n;k++){
+			if ( vect[i]>vect[k]){
+				aux= vect[i];
+				vect[i]=vect[k];
+				vect[k]=aux;
+			}
+		}	
+	}  
+}
+void ordenar(int mat[fil][col], int n, int m){
+	int i;
+	  for ( i=0;i<n;i++){
+		  burbuja( mat[i],m);
+	  }
+}
+
+	void main(){
+		int n,m,mat[fil][col];
+		cout<<"ingrese tamaño de columnas"<<endl;
+			cin>>n;
+		cout<<"ingrese tamaño de filas"<<endl;
+		cin>>m;
+		cargar(mat,n,m);
+		mostrar(mat,n,m);
+		ordenar(mat,n,m);
+		mostrar(mat,n,m);
+		getch();
+	}
