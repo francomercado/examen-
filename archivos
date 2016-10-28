@@ -1,0 +1,64 @@
+#include <iostream>
+#include <stdio.h>
+#include <conio.h>
+#include <string.h>
+using namespace std;
+
+struct regAmigo{
+	char nombre[30];
+	int  edad;
+	char sexo; //M de masculino y F de femenino
+	char estado; //A de activo y E de registro eliminado
+};
+
+void adicionarAmigo(){
+	FILE *ptr;
+	regAmigo reg;
+	cout << "Introducir nombre : ";
+	do{	
+		gets(reg.nombre);
+	}while(strlen(reg.nombre) == 0);
+	do{
+		cout << "Edad ? : ";
+		cin  >> reg.edad;
+		if(reg.edad < 1 || reg.edad>100){
+			cout << "\nError..!!!\nDebe introducir un valor entre 1 y 100.\n";
+		}
+	}while(reg.edad < 1 || reg.edad>100);
+	do{
+		cout << "Sexo <F/M> ? : ";
+		cin  >> reg.sexo;
+		if(reg.sexo != 'F' && reg.sexo != 'M'){
+			cout << "\nError..!!!\nDebe introducir F de femenino o M de masculino.\n";
+		}
+	}while(reg.sexo != 'F' && reg.sexo != 'M');
+	reg.estado = 'A';
+	ptr = fopen("amigos.dat","ab");
+	fwrite(&reg,sizeof(reg),1,ptr);
+	fclose(ptr);	
+}
+
+void listarAmigos(){
+	FILE *ptr;
+	regAmigo reg;
+	ptr = fopen("amigos.dat","rb");
+	if(ptr != NULL ){
+		fread(&reg,sizeof(reg),1,ptr);
+		while(feof(ptr) == false){
+			if(reg.estado == 'A'){
+				cout << endl << reg.nombre<<"\t"<<reg.edad<<"\t"<<reg.sexo;
+			}
+			fread(&reg,sizeof(reg),1,ptr);
+		}
+		fclose(ptr);	
+	}else{
+		cout << "\nArchivo no existe..!!!\n";
+	}	
+}
+
+void main(){
+
+	adicionarAmigo();
+	listarAmigos();
+	getch();
+}
