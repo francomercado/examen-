@@ -1,0 +1,147 @@
+#include <iostream>
+#include "conio.h"
+#include <string.h>
+#include <stdio.h>
+
+using namespace std;
+
+
+struct regProducto{
+	int idProd;
+	char nombre[30];
+	int precio;
+	int stock;
+    char estado;
+
+};
+struct regVenta{
+	int idVenta;
+	int idProducto;	
+	int cantidad;
+    char estado;
+
+};
+struct regCompra{
+	int idProducto;	
+	char fecha[30];
+    int cantidad;
+	int idCompra;
+};
+void addProducto(){
+	FILE *ptr;
+	regProducto reg;
+	cout<<"introducir Id: ";
+		cin>>reg.idProd;
+		cout<<"introduce nombre de producto:";
+	do{
+		gets(reg.nombre);
+	}
+	while(strlen(reg.nombre)==0);
+
+cout<<"introducir Precio";
+cin>>reg.precio;
+reg.stock=0;
+reg.estado='A';
+ptr = fopen("producto.dat","ab");
+fwrite(&reg,sizeof(reg),1,ptr);
+fclose(ptr);
+}
+
+void listarProducto(){
+	FILE *ptr;
+	regProducto reg;
+	ptr= fopen("producto.dat","rb");
+	if (ptr != NULL){
+		fread(&reg, sizeof(reg),1,ptr);
+			while(feof(ptr)== false){
+				if(reg.estado == 'A'){
+					cout<<endl<<"\t"<<reg.idProd<<"\t"<<reg.nombre<<"\t"<<reg.stock<<"\t"<<reg.precio;
+				}
+				fread(&reg, sizeof (reg), 1, ptr);
+			cout <<endl;
+	}fclose(ptr);
+
+}else {
+	cout << " el archivo no existe";
+   }
+}
+bool verifSiExisteProducto(int ip){
+	FILE *ptr;
+	regProducto reg;
+    bool k= false ;
+	ptr= fopen("producto.dat","rb");
+	if (ptr != NULL){
+		fread(&reg, sizeof(reg),1,ptr);
+			while(feof(ptr)== false){
+				if((reg.idProd == ip)&&(reg.estado == 'A')){
+					k= true;
+				}
+			fread(&reg, sizeof (reg), 1, ptr);
+			}
+			fclose(ptr);
+	} else {
+			cout<<" el archivo no existe";
+	}
+	return(k);
+}
+bool verifSiExisteCantidad(int cp, int cantAvend){
+	FILE *ptr;
+	regProducto reg;
+    bool k= false ;
+	ptr= fopen("producto.dat","rb");
+	if (ptr != NULL){
+		fread(&reg, sizeof(reg),1,ptr);
+			while(feof(ptr)== false){
+				if((reg.stock == cp)&&(reg.stock >= cantAvend)){
+					k= true;
+				}
+			fread(&reg, sizeof (reg), 1, ptr);
+			}
+			fclose(ptr);
+	} else {
+			cout<<" el archivo no existe";
+	}
+	return(k);
+}	
+
+
+void addVenta(){
+	FILE *ptr;
+	regVenta reg;
+
+	cout<<" introducir idVenta"<<endl;
+	cin>>reg.idProducto;
+
+	
+	do{
+		cout<<"introducir idProd del producto venido: ";
+	cin>> reg.idProducto;
+	} while (verifSiExisteProducto(reg.idProducto) == false);
+
+
+	do{
+		cout<<"introducir cantidad vendidad"<<endl;
+        cin>>reg.cantidad;
+	} while(verifSiExisteCantidad(reg.idProducto,reg.cantidad)== false);
+
+	reg.estado='A';
+
+	ptr= fopen("venta.dat","ab");
+    fwrite(&reg,sizeof(reg),1,ptr);
+fclose(ptr);
+}
+void addcompra(){
+
+
+
+}
+void main (){
+		//addProducto();
+		listarProducto();
+		addVenta();
+		getch();
+}
+
+
+
+
